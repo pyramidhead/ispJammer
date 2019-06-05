@@ -4,6 +4,7 @@
 # define vars
 domcount=$(wc -l subdom | cut -d' ' -f1)
 wordcount=$(wc -l dictfile | cut -d' ' -f1)
+agentcount=$(wc -l usemeagent | cut -d' ' -f1)
 permute=$((domcount*wordcount))
 iteration=1
 
