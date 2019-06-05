@@ -5,7 +5,7 @@
 domcount=$(wc -l subdom | cut -d' ' -f1)
 wordcount=$(wc -l dictfile | cut -d' ' -f1)
 agentcount=$(wc -l usemeagent | cut -d' ' -f1)
-permute=$((domcount*wordcount*usemeagent))
+permute=$((domcount*wordcount*agentcount))
 iteration=1
 
 while [ "$iteration" -le "$permute" ]; do
