@@ -2,20 +2,20 @@
 # SOMEBODY POISONED THE WATER HOLE
 
 # define vars
-domcount=(`wc -l subdom`)
-wordcount=(`wc -l dictfile`)
-let permute=$domcount*$wordcount
+domcount=$(wc -l subdom | cut -d' ' -f1)
+wordcount=$(wc -l dictfile | cut -d' ' -f1)
+permute=$((domcount*wordcount))
 iteration=1
 
 while [ "$iteration" -le "$permute" ]; do
 	# randomize tld
-	tld=(`python randyline.py subdom`)
+	tld=$(python randyline.py subdom)
 
 	# randomize domain word
-	dictword=(`python randyline.py dictfile`)
+	dictword=$(python randyline.py dictfile)
 	
 	# randomize user agent - still TBD
-	#imthisguy=(`python randyline.py usemeagent`)
+	#imthisguy=$(python randyline.py usemeagent)
 
 	# test for domain presence
 	testhost="$dictword.$tld"
@@ -37,7 +37,7 @@ while [ "$iteration" -le "$permute" ]; do
   		sleep 5
 	fi
 
-iteration=$(($iteration + 1))
+iteration=$((iteration + 1))
 done
 
 #resist
